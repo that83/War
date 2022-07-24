@@ -184,17 +184,22 @@ sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev l
 ```
 sudo apt install python3-pip
 ```
+![image](https://user-images.githubusercontent.com/17448647/180640090-f928a234-65d6-455f-b7ca-08b3858a8049.png)
+
+
 ##### Set the configuration:
 
 ```
 USER_BASE_BIN=$(python3 -m site --user-base)/bin
 export PATH="$USER_BASE_BIN:$PATH"
 ```
+![image](https://user-images.githubusercontent.com/17448647/180640108-d6844f6b-4da0-42c8-89b9-7663a9c04d71.png)
 
 ##### Install Building env
 ```
 sudo apt install clang build-essential make
 ```
+![image](https://user-images.githubusercontent.com/17448647/180640123-09ae2bf9-cb91-4fee-99bc-7067e97a61f8.png)
 
 ##### Install Rust & Cargo
 ```
@@ -203,14 +208,17 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 You will see the following:
 
-![img](./images/rust.png)
+![image](https://user-images.githubusercontent.com/17448647/180640180-f977c484-ffd1-49e5-865a-d432c3a3e468.png)
 
 Press 1 and press enter.
+![image](https://user-images.githubusercontent.com/17448647/180640192-e90a04c0-1cd0-43d8-a54c-a0ed12e74bb0.png)
+
 
 ##### Source the environment
 ```
 source $HOME/.cargo/env
 ```
+![image](https://user-images.githubusercontent.com/17448647/180640215-22ab8734-a04b-4fd8-af55-7477b6a6df6a.png)
 
 #### Clone `nearcore` project from GitHub
 First, clone the [`nearcore` repository](https://github.com/near/nearcore).
@@ -220,11 +228,13 @@ git clone https://github.com/near/nearcore
 cd nearcore
 git fetch
 ```
+![image](https://user-images.githubusercontent.com/17448647/180640265-b403a7b0-5fde-4858-945d-7fa820cd7915.png)
 
 Checkout to the commit needed. Please refer to the commit defined in [this file](https://github.com/near/stakewars-iii/blob/main/commit.md). 
 ```
 git checkout <commit>
 ```
+![image](https://user-images.githubusercontent.com/17448647/180640350-bff79b70-6312-4a02-935e-7f120063b10e.png)
 
 #### Compile `nearcore` binary
 In the `nearcore` folder run the following commands:
@@ -232,6 +242,8 @@ In the `nearcore` folder run the following commands:
 ```
 cargo build -p neard --release --features shardnet
 ```
+![image](https://user-images.githubusercontent.com/17448647/180641092-5c980038-cc2e-4bfd-a43f-22a4559ba5a8.png)
+
 The binary path is `target/release/neard`. If you are seeing issues, it is possible that cargo command is not found. Compiling `nearcore` binary may take a little while.
 
 #### Initialize working directory
@@ -241,6 +253,8 @@ In order to work properly, the NEAR node requires a working directory and a coup
 ```
 ./target/release/neard --home ~/.near init --chain-id shardnet --download-genesis
 ```
+![image](https://user-images.githubusercontent.com/17448647/180641182-cbf1a7b7-2003-45be-814c-2f0a2359ab5a.png)
+
 
 ![img](./images/initialize.png)
 
@@ -264,6 +278,7 @@ From the generated `config.json`, there two parameters to modify:
 rm ~/.near/config.json
 wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/shardnet/config.json
 ```
+![image](https://user-images.githubusercontent.com/17448647/180641258-aa73f533-a362-4c08-9587-f7871206774a.png)
 
 #### Get latest snapshot
 
@@ -273,6 +288,8 @@ Install AWS Cli
 ```
 sudo apt-get install awscli -y
 ```
+![image](https://user-images.githubusercontent.com/17448647/180641360-0e00514c-778c-4a7a-a054-ac3d45c59187.png)
+
 
 Download snapshot (genesis.json)
 ```
@@ -280,6 +297,8 @@ Download snapshot (genesis.json)
 cd ~/.near
 wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/shardnet/genesis.json
 ```
+![image](https://user-images.githubusercontent.com/17448647/180641388-85cbe832-42a0-41d7-83f6-9148aeb00aa6.png)
+
 
 If the above fails, AWS CLI may be oudated in your distribution repository. Instead, try:
 ```
@@ -293,13 +312,11 @@ To start your node simply run the following command:
 cd ~/nearcore
 ./target/release/neard --home ~/.near run
 ```
+![image](https://user-images.githubusercontent.com/17448647/180641449-91815b82-404f-4d66-adc7-6b98d0c4fe9f.png)
 
 ![img](./images/download.png)
 The node is now running you can see log outputs in your console. Your node should be find peers, download headers to 100%, and then download blocks.
-
 ----
-
-
 
 ### Activating the node as validator
 ##### Authorize Wallet Locally
