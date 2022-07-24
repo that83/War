@@ -661,3 +661,4 @@ Command:
 ```
 curl -s -d '{"jsonrpc": "2.0", "method": "validators", "id": "dontcare", "params": [null]}' -H 'Content-Type: application/json' 127.0.0.1:3030 | jq -c '.result.current_validators[] | select(.account_id | contains ("POOL_ID"))'
 ```
+If your Stake is greater than Seat Price, your pool will become Validator after 1-2 epoch(s) and you can see it in https://explorer.shardnet.near.org/nodes/validators with it's status is "ACTIVE".
