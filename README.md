@@ -246,8 +246,6 @@ In order to work properly, the NEAR node requires a working directory and a coup
 ![image](https://user-images.githubusercontent.com/17448647/180641182-cbf1a7b7-2003-45be-814c-2f0a2359ab5a.png)
 
 
-![img](./images/initialize.png)
-
 This command will create the directory structure and will generate `config.json`, `node_key.json`, and `genesis.json` on the network you have passed. 
 
 - `config.json` - Configuration parameters which are responsive for how the node will work. The config.json contains needed information for a node to run on the network, how to communicate with peers, and how to reach consensus. Although some options are configurable. In general validators have opted to use the default config.json provided.
@@ -304,7 +302,6 @@ cd ~/nearcore
 ```
 ![image](https://user-images.githubusercontent.com/17448647/180641449-91815b82-404f-4d66-adc7-6b98d0c4fe9f.png)
 
-![img](./images/download.png)
 The node is now running you can see log outputs in your console. Your node should be find peers, download headers to 100%, and then download blocks.
 ----
 
@@ -341,7 +338,7 @@ Type your account and click Next
 
 3 – After Grant, you will see a page like this, go back to console
 
-![img](./images/4.png)
+![image](https://user-images.githubusercontent.com/17448647/180659831-fd23bce5-405d-430e-98ea-67cb3854d6cb.png)
 
 4 – Enter your wallet and press Enter
 
@@ -512,10 +509,6 @@ To change the pool parameters, such as changing the amount of commission charged
 near call <pool_name> update_reward_fee_fraction '{"reward_fee_fraction": {"numerator": 1, "denominator": 100}}' --accountId <account_id> --gas=300000000000000
 ```
 
-
-You will see something like this:
-
-![img](./images/pool.png)
 
 If there is a “True” at the End. Your pool is created.
 
