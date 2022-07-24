@@ -1,5 +1,5 @@
 # Near protocol's StackWar guide for DigitalOcean
-
+#### Pricing for running the validator: $48/month.
 #### Regist a VPS:
 Login https://cloud.digitalocean.com
 Click "Droplets" manu
