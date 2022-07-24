@@ -1,14 +1,4 @@
-# War
-
-```
-node -v
-```
-> v18.x.x
-
-```
-npm -v
-```
-> 8.x.x
+# Near protocol's StackWar guide for DigitalOcean
 
 #### Regist a VPS:
 Login https://cloud.digitalocean.com
@@ -319,6 +309,12 @@ The node is now running you can see log outputs in your console. Your node shoul
 ----
 
 ### Activating the node as validator
+##### Create new NEAR account
+At Wallet page click "+Create New Account" button
+![image](https://user-images.githubusercontent.com/17448647/180642421-eb6f4e08-86bf-4f3c-b8f5-b26c00a6384c.png)
+
+
+
 ##### Authorize Wallet Locally
 A full access key needs to be installed locally to be able to sign transactions via NEAR-CLI.
 
@@ -328,17 +324,20 @@ A full access key needs to be installed locally to be able to sign transactions 
 ```
 near login
 ```
+![image](https://user-images.githubusercontent.com/17448647/180642711-b96950e6-ba24-4a6d-b447-ff358386e464.png)
 
 > Note: This command launches a web browser allowing for the authorization of a full access key to be copied locally.
 
 1 – Copy the link in your browser
-
-
-![img](./images/1.png)
+![image](https://user-images.githubusercontent.com/17448647/180642759-cab79897-b06f-4073-b140-eb13a134eccf.png)
+Chose account, Click "Next"
+![image](https://user-images.githubusercontent.com/17448647/180642824-7d647678-de7b-4a58-87eb-352e290473a1.png)
+Click "Connect" button
 
 2 – Grant Access to Near CLI
 
-![img](./images/3.png)
+![image](https://user-images.githubusercontent.com/17448647/180642853-e6e6c7bf-e552-4e5b-8601-dea4eccb4145.png)
+Type your account and click Next
 
 3 – After Grant, you will see a page like this, go back to console
 
@@ -346,7 +345,7 @@ near login
 
 4 – Enter your wallet and press Enter
 
-![img](./images/5.png)
+![image](https://user-images.githubusercontent.com/17448647/180642960-ae226417-1bfc-415f-a1c0-c0dcc64e58b9.png)
 
 
 #####  Check the validator_key.json
@@ -366,12 +365,16 @@ Create a `validator_key.json`
 near generate-key <pool_id>
 ```
 <pool_id> ---> xx.factory.shardnet.near WHERE xx is you pool name
+![image](https://user-images.githubusercontent.com/17448647/180656946-cf158d98-e472-4ffc-b8e0-b8a550ea878c.png)
+
 
 * Copy the file generated to shardnet folder:
 Make sure to replace <pool_id> by your accountId
 ```
 cp ~/.near-credentials/shardnet/YOUR_WALLET.json ~/.near/validator_key.json
 ```
+![image](https://user-images.githubusercontent.com/17448647/180657020-14129a8c-0123-432f-a638-51518e09530b.png)
+
 * Edit “account_id” => xx.factory.shardnet.near, where xx is your PoolName
 * Change `private_key` to `secret_key`
 
@@ -385,12 +388,17 @@ File content must be in the following pattern:
   "secret_key": "ed25519:****"
 }
 ```
+![image](https://user-images.githubusercontent.com/17448647/180657281-8acc750c-4e07-48fa-acbf-8cc325c7a851.png)
+![image](https://user-images.githubusercontent.com/17448647/180658090-57c4f648-6353-4f50-a341-eeff67ab11cc.png)
+
 
 #####  Start the validator node
 
 ```
 target/release/neard run
 ```
+![image](https://user-images.githubusercontent.com/17448647/180658458-d61d64e6-f3eb-443c-9ef2-bcc41de4d020.png)
+
 * Setup Systemd
 Command:
 
@@ -420,6 +428,7 @@ WantedBy=multi-user.target
 ```
 
 > Note: Change USER to your paths
+![image](https://user-images.githubusercontent.com/17448647/180658620-ea56255e-147c-4998-9eaf-19827b219542.png)
 
 Command:
 
@@ -431,6 +440,8 @@ Command:
 ```
 sudo systemctl start neard
 ```
+![image](https://user-images.githubusercontent.com/17448647/180658652-ca3ff96a-2aa0-4cff-aa68-b6b26438bbe4.png)
+
 If you need to make a change to service because of an error in the file. It has to be reloaded:
 
 ```
@@ -442,6 +453,8 @@ Command:
 ```
 journalctl -n 100 -f -u neard
 ```
+![image](https://user-images.githubusercontent.com/17448647/180658670-adfb0015-0eec-4f5a-b98d-9875b607c198.png)
+
 Make log output in pretty print
 
 Command:
@@ -449,6 +462,8 @@ Command:
 ```
 sudo apt install ccze
 ```
+![image](https://user-images.githubusercontent.com/17448647/180658701-cbfa9497-3ad8-4728-989f-ea541431e63d.png)
+
 View Logs with color
 
 Command:
@@ -456,6 +471,8 @@ Command:
 ```
 journalctl -n 100 -f -u neard | ccze -A
 ```
+![image](https://user-images.githubusercontent.com/17448647/180658735-092a52fc-3f09-4e66-933a-ac7b803da1a6.png)
+
 #### Becoming a Validator
 In order to become a validator and enter the validator set, a minimum set of success criteria must be met.
 
